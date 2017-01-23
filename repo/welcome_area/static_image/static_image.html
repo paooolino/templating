@@ -1,0 +1,26 @@
+	<style>
+	.welcome_area .static_image {
+    position: relative;
+    z-index: 1;
+    background-position: center center;
+    background-size: cover;
+	}
+	</style>
+	
+	<section class="welcome_area">
+		<div class="static_image" style="background-image: url(../repo/welcome_area/static_image/image2.jpg);">
+			
+		</div>
+	</section>
+	
+	<script>
+    $(window).on('resizeEnd', function () {
+			$(".welcome_area, .single_slide").height($(window).height());
+    });
+    $(window).on('resize', function () {
+			if (this.resizeTO) clearTimeout(this.resizeTO);
+			this.resizeTO = setTimeout(function () {
+				$(this).trigger('resizeEnd');
+			}, 300);
+    }).trigger("resize");
+	</script>

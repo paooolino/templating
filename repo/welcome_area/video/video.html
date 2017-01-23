@@ -1,0 +1,30 @@
+	<style>
+	.welcome_area {
+    position: relative;
+    z-index: 1;
+    background-position: center center;
+    background-size: cover;
+	}
+	</style>
+	
+	<section class="welcome_area" id="fullvideo">
+		<a class="player" data-property="{videoURL:'https://youtu.be/8QSgNM9yNjo',containment:'#fullvideo', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
+	</section>
+	
+	<script src="/repo/js/YTPlayer.min.js"></script>
+	
+	<script>
+    $(window).on('resizeEnd', function () {
+			$(".welcome-area, .single_slide").height($(window).height());
+    });
+    $(window).on('resize', function () {
+			if (this.resizeTO) clearTimeout(this.resizeTO);
+			this.resizeTO = setTimeout(function () {
+				$(this).trigger('resizeEnd');
+			}, 300);
+    }).trigger("resize");
+		
+    if ($.fn.mb_YTPlayer) {
+			$('.player').mb_YTPlayer();
+    }
+	</script>
