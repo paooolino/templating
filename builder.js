@@ -96,9 +96,10 @@ function processModule(module_name, module_content, deep) {
 	
 	// process children
 	var children_html = ''; 
+	
 	if (module_content.children) {
 		for (module in module_content.children) {
-			var objresult = processModule(module, module_content.children, deep+1);
+			var objresult = processModule(module, module_content.children[module], deep+1);
 			children_html = objresult.html;
 			libraries.css = libraries.css.concat(objresult.libraries.css);
 			libraries.js = libraries.js.concat(objresult.libraries.js);

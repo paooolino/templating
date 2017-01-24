@@ -1,9 +1,4 @@
-.welcome_area .static_image {
-	position: relative;
-	z-index: 1;
-	background-position: center center;
-	background-size: cover;
-}.slide_text {
+.slide_text {
 	position: absolute;
 	width: 100%;
 	left: 0;

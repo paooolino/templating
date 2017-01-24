@@ -4,6 +4,8 @@
 	- pagebase
 	
 	- welcomeArea_staticImage
+	
+	- slideText
 
 */
 
@@ -17,7 +19,11 @@ module.exports = {
 			/* list modules here */
 			"pagebase": {
 				"children": {
-					"welcomeArea_staticImage": {}
+					"welcomeArea_staticImage": {
+						"children": {
+							"slideText": {}
+						}
+					}
 				}
 			}
 			
