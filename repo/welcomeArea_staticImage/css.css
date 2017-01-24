@@ -1,0 +1,6 @@
+.welcome_area .static_image {
+	position: relative;
+	z-index: 1;
+	background-position: center center;
+	background-size: cover;
+}
