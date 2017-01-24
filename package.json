@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "php -S localhost:8000",
-    "open": "concurrently \"npm start\" \"node open.js\"",
+    "open": "node open.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

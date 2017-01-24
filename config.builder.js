@@ -19,6 +19,7 @@ module.exports = {
 			/* list modules here */
 			"pagebase": {
 				"children": {
+					"topBar": {},
 					"welcomeArea_staticImage": {
 						"children": {
 							"slideText": {}
