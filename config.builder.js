@@ -18,13 +18,9 @@ module.exports = {
 			
 			/* list modules here */
 			"pagebase": {
-				"children": {
+				"welcomeArea_staticImage": {
 					"topBar": {},
-					"welcomeArea_staticImage": {
-						"children": {
-							"slideText": {}
-						}
-					}
+					"slideText": {}
 				}
 			}
 			

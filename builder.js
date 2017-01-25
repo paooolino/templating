@@ -14,7 +14,8 @@ for (var template in config) {
 		var libraries = {
 			css: [],
 			js: [],
-			img: []
+			img: [],
+			fonts: []
 		};
 		for (var module in config[template][page]) {
 			var objresult = processModule(module, config[template][page][module]);
@@ -22,6 +23,7 @@ for (var template in config) {
 			libraries.css = libraries.css.concat(objresult.libraries.css);
 			libraries.js = libraries.js.concat(objresult.libraries.js);
 			libraries.img = libraries.img.concat(objresult.libraries.img);
+			libraries.fonts = libraries.fonts.concat(objresult.libraries.fonts);
 			custom_css += objresult.css;
 			custom_js += objresult.js;
 		}
@@ -67,6 +69,7 @@ function createTemplateFolder(template_name) {
 	createFolderIfNotExists(TEMPLATE_ROOT + template_name + '/css');
 	createFolderIfNotExists(TEMPLATE_ROOT + template_name + '/js');
 	createFolderIfNotExists(TEMPLATE_ROOT + template_name + '/img');
+	createFolderIfNotExists(TEMPLATE_ROOT + template_name + '/fonts');
 }
 
 function processModule(module_name, module_content, deep) {
@@ -79,36 +82,32 @@ function processModule(module_name, module_content, deep) {
 	var libraries = {
 		css: [],
 		js: [],
-		img: []
+		img: [],
+		fonts: []
 	}
 	if (fs.existsSync(REPO_ROOT + module_name + "/dependencies.js")) {
 		var dependencies = require(REPO_ROOT + module_name + "/dependencies.js");
-		for (var i = 0; i < dependencies.js.length; i++) {
-			libraries.js.push(REPO_ROOT + module_name + "/" + dependencies.js[i]);
-		}
-		for (var i = 0; i < dependencies.css.length; i++) {
-			libraries.css.push(REPO_ROOT + module_name + "/" + dependencies.css[i]);
-		}
-		for (var i = 0; i < dependencies.img.length; i++) {
-			libraries.img.push(REPO_ROOT + module_name + "/" + dependencies.img[i]);
+		for (ext in dependencies) {
+			for (var i = 0; i < dependencies[ext].length; i++) {
+				libraries[ext].push(REPO_ROOT + module_name + "/" + dependencies[ext][i]);
+			}
 		}
 	}
 	
 	// process children
 	var children_html = ''; 
 	
-	if (module_content.children) {
-		for (module in module_content.children) {
-			var objresult = processModule(module, module_content.children[module], deep+1);
-			children_html = objresult.html;
-			libraries.css = libraries.css.concat(objresult.libraries.css);
-			libraries.js = libraries.js.concat(objresult.libraries.js);
-			libraries.img = libraries.img.concat(objresult.libraries.img);
-			css += objresult.css;
-			js += objresult.js;
-		}
+	for (module in module_content) {
+		var objresult = processModule(module, module_content[module], deep+1);
+		children_html += objresult.html;
+		libraries.css = libraries.css.concat(objresult.libraries.css);
+		libraries.js = libraries.js.concat(objresult.libraries.js);
+		libraries.img = libraries.img.concat(objresult.libraries.img);
+		libraries.fonts = libraries.fonts.concat(objresult.libraries.fonts);
+		css += objresult.css;
+		js += objresult.js;
 	}
-
+	
 	html = html.replace('{{CHILDREN}}', 
 		insert_tabbed_html(html, children_html, '{{CHILDREN}}'));
 	
