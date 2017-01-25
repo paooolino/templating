@@ -1,12 +1,4 @@
 
-#header_parallax {
-  width: 100%;
-  min-height: 600px;
-  height: auto;
-  padding: 0 0 80px;
-  background-color: transparent;
-}
-
 #topbar_simple_social.topbar .nav-utility {
   color: #ffffff;
 }
