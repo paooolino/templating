@@ -1,0 +1,69 @@
+
+@import "config.less";
+
+#inforow_4slot .contact-item {
+  position: relative;
+  margin-top: 20px;
+  padding-left: 55px;
+}
+#inforow_4slot .contact-item-icon {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+#inforow_4slot .contact-item-icon span,
+#inforow_4slot .contact-item-icon i {
+  position: relative;
+  z-index: 3;
+}
+#inforow_4slot .contact-item-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #2b2b2b;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#inforow_4slot .contact-item-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+#inforow_4slot .contact-item.contact-item-alt {
+  position: relative;
+  padding-left: 0;
+  padding-top: 50px;
+}
+#inforow_4slot .contact-item.contact-item-alt .contact-item-icon {
+  top: 0;
+  left: 0;
+}
+#inforow_4slot .contact-item.contact-item-alt.text-center .contact-item-icon {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}

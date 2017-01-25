@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var less = require('less');
 var config = require("./config.builder.js");
 
 var TEMPLATE_ROOT = "./build/";
@@ -33,7 +34,13 @@ for (var template in config) {
 		writeLibraries(template, libraries);
 		writeFile(TEMPLATE_ROOT + template + "/" + page, html);
 	}
-	writeFile(TEMPLATE_ROOT + template + '/css/custom.css', custom_css);
+	
+	less.render(custom_css, function (e, output) {
+		if (e) {
+			console.log(e);
+		}
+		writeFile(TEMPLATE_ROOT + template + '/css/custom.css', output.css);
+	});
 	writeFile(TEMPLATE_ROOT + template + '/js/custom.js', custom_js);
 }
 
