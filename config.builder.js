@@ -3,8 +3,9 @@
 
 	- pagebase
 	
+	- topBar
+	- navbar_ecommerce
 	- welcomeArea_staticImage
-	
 	- slideText
 
 */
@@ -18,8 +19,9 @@ module.exports = {
 			
 			/* list modules here */
 			"pagebase": {
+				"topBar": {},
+				"navbar_ecommerce": {},
 				"welcomeArea_staticImage": {
-					"topBar": {},
 					"slideText": {}
 				}
 			}

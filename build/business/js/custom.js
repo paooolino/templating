@@ -1,3 +1,6 @@
+$(document).on('click', '.yamm .dropdown-menu', function(e) {
+   e.stopPropagation()
+})
 $(window).on('resizeEnd', function () {
 	$(".welcome_area, .static_image").height($(window).height());
 });
